@@ -17,13 +17,18 @@ public partial class AppDbContext : DbContext
     {
         modelBuilder.Entity<AfiDemo>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("afi_demo");
+            entity.ToTable("afi_demo");
 
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("id");
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.DateOfBirth)
+                .HasColumnType("datetime")
+                .HasColumnName("DateOfBIrth");
+            entity.Property(e => e.EmailAddress).HasMaxLength(150);
+            entity.Property(e => e.FirstName).HasMaxLength(50);
+            entity.Property(e => e.ReferenceNumber)
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.Surname).HasMaxLength(50);
         });
 
         OnModelCreatingPartial(modelBuilder);

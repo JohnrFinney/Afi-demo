@@ -58,7 +58,7 @@ public class GlobalExceptionHandler(IHostEnvironment env, ILogger<GlobalExceptio
         {
             reasonPhrase = UnhandledExceptionMsg;
         }
-        data.Add("reasonPhrase", reasonPhrase);
+        data.Add("ReasonPhrase", reasonPhrase);
 
         var problemDetails = new ProblemDetails
         {

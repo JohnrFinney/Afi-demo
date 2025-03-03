@@ -17,13 +17,14 @@ app.UseExceptionHandler();
 
 app.RegisterDemoEndPoints();
 
+app.MapGet("/", () => "I'm here!").ExcludeFromDescription();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 

@@ -1,5 +1,6 @@
 ﻿using afi_demo.Models.Requests;
 using afi_demo.Services.Interfaces;
+using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 
@@ -13,13 +14,16 @@ public static class DemoEndPoint
         string groupTagName = "Demo";
 
 
-        app.MapPost("demo/{validateAll}", async Task<IResult> ([FromRoute] bool validateAll,
-                                                               [FromBody] RegisterUserRequest model,
-                                                               [FromServices] IDemoService service) =>
+        app.MapPost("demo/{validateAll?}", async Task<IResult> ([FromBody] RegisterUserRequest model,
+                                                               [FromServices] IDemoService service,
+                                                               [FromServices] IHttpContextAccessor httpContext,
+                                                               [FromRoute] bool validateAll = false) =>
         {
             var res = await service.RegisterNewUser(model, validateAll);
             if (res != null)
-                return Results.Created(new Uri(""), res.Value);
+            {
+                return Results.Created(new Uri("/demo", UriKind.Relative) + "/" + res.Value, res.Value);
+            }
             else
                 return Results.BadRequest();
 

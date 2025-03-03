@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "bc6f52b8-8e50-4373-98eb-cd69f19c2442",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3987106"
+	},
+	"item": [
+		{
+			"name": "AFI Demo Call",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 0,\r\n  \"firstName\": \"string\",\r\n  \"surname\": \"string\",\r\n  \"referenceNumber\": \"string\",\r\n  \"dateOfBirth\": \"2025-03-03T10:03:16.938Z\",\r\n  \"email\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7054/demo/true",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7054",
+					"path": [
+						"demo",
+						"true"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
